@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Glue\StoresRestApi;
 
-use ValanticSpryker\Glue\StoresRestApi\Processor\Mapper\StoresResourceMapper;
 use Spryker\Glue\StoresRestApi\Processor\Mapper\StoresResourceMapperInterface;
 use Spryker\Glue\StoresRestApi\StoresRestApiFactory as SprykerStoresRestApiFactory;
+use ValanticSpryker\Glue\StoresRestApi\Processor\Mapper\StoresResourceMapper;
 
 class StoresRestApiFactory extends SprykerStoresRestApiFactory
 {

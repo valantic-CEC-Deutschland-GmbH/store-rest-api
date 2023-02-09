@@ -4,9 +4,6 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Glue\StoresRestApi;
 
-use ValanticSpryker\Glue\CustomersRestApi\Plugin\StoreResourceCustomerMinMaxAgeMapperPlugin;
-use ValanticSpryker\Glue\StoresRestApi\Plugin\StoreResourceGenderMapperPlugin;
-use ValanticSpryker\Glue\StoresRestApi\Plugin\StoreResourceSalutationMapperPlugin;
 use Spryker\Glue\Kernel\Container;
 use Spryker\Glue\StoresRestApi\StoresRestApiDependencyProvider as SprykerStoresRestApiDependencyProvider;
 
@@ -41,14 +38,10 @@ class StoresRestApiDependencyProvider extends SprykerStoresRestApiDependencyProv
     }
 
     /**
-     * @return array<\Pyz\Glue\StoresRestApi\Plugin\StoreResourceMapperPluginInterface>
+     * @return array<\ValanticSpryker\Glue\StoresRestApi\Plugin\StoreResourceMapperPluginInterface>
      */
     protected function getStoreResourceMapperPlugins(): array
     {
-        return [
-            new StoreResourceGenderMapperPlugin(),
-            new StoreResourceSalutationMapperPlugin(),
-            new StoreResourceCustomerMinMaxAgeMapperPlugin(),
-        ];
+        return [ ];
     }
 }
