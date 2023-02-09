@@ -1,5 +1,5 @@
 {
-    "name": "valantic-spryker/your-package",
+    "name": "valantic-spryker/store-rest-api",
     "type": "library",
     "description": "Adds spryker logclient to elasticsearch, you will be able to see executed elasticsearch api calls with its details.",
     "license": "MIT",
