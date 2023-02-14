@@ -1,72 +1,32 @@
-# your package
+# stores-rest-api
 
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg)](https://php.net/)
+[![coverage report](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/badges/master/pipeline.svg)](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/-/pipelines?page=1&scope=all&ref=master)
+[![coverage report](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/badges/master/coverage.svg)](https://packages.gitlab-pages.nxs360.com/php/spryker/storerestapi)
 
- - Allows/Adds mapper extension [[plugins](Glue/StoresRestApi/Plugin/StoreResourceMapperPluginInterface.php)]  to /stores endpoint
+# Description
+ - Adds mapper extension plugins [[plugins](Glue/StoresRestApi/Plugin/StoreResourceMapperPluginInterface.php)]  to /stores endpoint
 
-Example Plugin:
-```php
-<?php
+# Install
+- https://gitlab.nxs360.com/groups/packages/php/spryker/-/packages
 
-declare(strict_types = 1);
+# Reference implementation
+- https://gitlab.nxs360.com/team-lr/glue-api
 
-namespace Pyz\Glue\StoresRestApi\Plugin;
+# HowTos
 
-use Generated\Shared\Transfer\StoresRestAttributesTransfer;
-use Spryker\Glue\Kernel\AbstractPlugin;
+PHP Container: `docker run -it --rm --name my-running-script -v "$PWD":/data spryker/php:latest bash`
 
-/**
- * @method \Pyz\Glue\StoresRestApi\StoresRestApiFactory getFactory()
- */
-class StoreResourceGenderMapperPlugin extends AbstractPlugin implements StoreResourceMapperPluginInterface
-{
-    /**
-     * @param \Generated\Shared\Transfer\StoresRestAttributesTransfer $storeRestAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoresRestAttributesTransfer
-     */
-    public function map(StoresRestAttributesTransfer $storeRestAttributesTransfer): StoresRestAttributesTransfer
-    {
-        $storeClient = $this->getFactory()->getStoreClient();
-        $storeRestAttributesTransfer->setGenders($storeClient->getCurrentStore()->getAvailableGenders());
+Run Tests: `codecept run --env standalone`
 
-        return $storeRestAttributesTransfer;
-    }
-}
-```
-## Integration
+Fixer: `vendor/bin/phpcbf --standard=phpcs.xml --report=full src/ValanticSpryker/`
 
-### Add composer registry
-```
-composer config repositories.gitlab.nxs360.com/461 '{"type": "composer", "url": "https://gitlab.nxs360.com/api/v4/group/461/-/packages/composer/packages.json"}'
-```
+Disable opcache: `mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcache.iniold`
 
-### Add Gitlab domain
-```
-composer config gitlab-domains gitlab.nxs360.com
-```
+XDEBUG:
+- `ip addr | grep '192.'`
+- `$docker-php-ext-enable xdebug`
+- configure phpstorm (add 127.0.0.1 phpstorm server with name valantic)
+- `$PHP_IDE_CONFIG=serverName=valantic php -dxdebug.mode=debug -dxdebug.client_host=192.168.87.39 -dxdebug.start_with_request=yes ./vendor/bin/codecept run --env standalone`
 
-### Authentication
-Go to Gitlab and create a personal access token. Then create an **auth.json** file:
-```
-composer config gitlab-token.gitlab.nxs360.com <personal_access_token>
-```
-
-Make sure to add **auth.json** to your **.gitignore**.
-
-### Install package
-```
-composer req valantic-spryker/elasticsearch-logging
-```
-
-### Update your shared config
-```php
-$config[KernelConstants::PROJECT_NAMESPACES] = [
-    'ValanticSpryker',
-    ...
-];
-
-$config[LogConstants::LOG_LEVEL] = Logger::DEBUG;
-```
-
-Reference implementation: https://gitlab.nxs360.com/team-lr/glue-api
+- Run Tests with coverage: `XDEBUG_MODE=coverage vendor/bin/codecept run --env standalone --coverage --coverage-xml --coverage-html`

@@ -4,14 +4,34 @@ stages:
   - validation
   - deploy
   - post-test
+  - release
 
-composer:validate:
+tests:coverage:
   stage: validation
   script:
     - composer validate
     - composer install
     - composer cs-check
     - composer md-check
+    - composer test
+    - composer stan
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    expire_in: 30 days
+    paths:
+      - tests/_output/
+
+pages:
+  image: ruby:2.7
+  stage: deploy
+  script:
+    - "mv tests/_output/coverage/ public/"
+  artifacts:
+    expire_in: 30 days
+    paths:
+      - public
+  only:
+    - master
 
 deploy:composer:
   stage: deploy
@@ -34,3 +54,4 @@ deploy:composer:
     - if: $CI_MERGE_REQUEST_ID
       when: never
     - if: $CI_COMMIT_TAG =~ /^?[0-9]+[.][0-9]+([.][0-9]+)?$/
+
