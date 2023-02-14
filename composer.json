@@ -1,11 +1,11 @@
 {
     "name": "valantic-spryker/store-rest-api",
     "type": "library",
-    "description": "Adds spryker logclient to elasticsearch, you will be able to see executed elasticsearch api calls with its details.",
+    "description": "Allows/Adds mapper extension to /stores endpoint.",
     "license": "MIT",
     "require": {
         "php": ">=8.0",
-        "spryker/stores-rest-api": "^1.0"
+        "spryker/stores-rest-api": ">=1.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -14,7 +14,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ValanticSprykerTest\\": "tests/ValanticSprykerTest/"
+            "ValanticSprykerTest\\": "tests/ValanticSprykerTest/",
+            "Generated\\": "src/Generated/",
+            "Orm\\Zed\\": "src/Orm/Zed/"
         }
     },
     "minimum-stability": "dev",
@@ -39,15 +41,19 @@
     "include-path": [
         "src/"
     ],
-    "require-dev": {
-        "spryker/code-sniffer": "^0.17.18",
-        "spryker-sdk/phpstan-spryker": "^0.4.0",
-        "spryker/architecture-sniffer": "^0.5.7",
-        "spryker/development": "^3.34"
+  "require-dev": {
+      "fond-of-codeception/spryker": "^1.0 || ^2.0",
+      "spryker-sdk/phpstan-spryker": "*",
+      "spryker/architecture-sniffer": "*",
+      "spryker/code-sniffer": "*",
+      "spryker/development": "*",
+      "spryker/testify": "*"
     },
     "scripts": {
       "cs-fix": "phpcbf --standard=phpcs.xml src",
       "cs-check": "phpcs -s --standard=phpcs.xml --report=full src",
-      "md-check": "phpmd src/ text phpmd-ruleset.xml --minimumpriority 2"
+      "md-check": "phpmd src/ text phpmd-ruleset.xml --minimumpriority 2",
+      "stan": "vendor/bin/phpstan analyze -l 4 src/ValanticSpryker/",
+      "test": "codecept run --env standalone --coverage-text --no-colors --coverage-html"
     }
 }
