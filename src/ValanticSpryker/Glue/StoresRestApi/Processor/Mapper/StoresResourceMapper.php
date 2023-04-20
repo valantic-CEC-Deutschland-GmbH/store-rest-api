@@ -37,7 +37,7 @@ class StoresResourceMapper extends SprykerStoresResourceMapper
      *
      * @return \Generated\Shared\Transfer\StoresRestAttributesTransfer
      */
-    private function executeStoreMappingPlugins(StoresRestAttributesTransfer $storeRestAttributesTransfer): StoresRestAttributesTransfer
+    protected function executeStoreMappingPlugins(StoresRestAttributesTransfer $storeRestAttributesTransfer): StoresRestAttributesTransfer
     {
         foreach ($this->storeMappingPlugins as $storeMappingPlugin) {
             $storeRestAttributesTransfer = $storeMappingPlugin->map($storeRestAttributesTransfer);
