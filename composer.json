@@ -2,7 +2,7 @@
     "name": "valantic-cec/stores-rest-api",
     "type": "library",
     "description": "Allows/Adds mapper extension to /stores endpoint.",
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
         "php": ">=8.0",
         "spryker/stores-rest-api": ">=1.0.0"
