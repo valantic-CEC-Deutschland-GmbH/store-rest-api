@@ -1,5 +1,5 @@
 {
-    "name": "valantic-cec/stores-rest-api",
+    "name": "valantic-spryker/stores-rest-api",
     "type": "library",
     "description": "Allows/Adds mapper extension to /stores endpoint.",
     "license": "proprietary",
