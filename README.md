@@ -1,17 +1,12 @@
 # stores-rest-api
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg)](https://php.net/)
-[![coverage report](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/badges/master/pipeline.svg)](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/-/pipelines?page=1&scope=all&ref=master)
-[![coverage report](https://gitlab.nxs360.com/packages/php/spryker/storerestapi/badges/master/coverage.svg)](https://packages.gitlab-pages.nxs360.com/php/spryker/storerestapi)
 
 # Description
  - Adds mapper extension plugins [[plugins](Glue/StoresRestApi/Plugin/StoreResourceMapperPluginInterface.php)]  to /stores endpoint
 
 # Install
-- https://gitlab.nxs360.com/groups/packages/php/spryker/-/packages
-
-# Reference implementation
-- https://gitlab.nxs360.com/team-lr/glue-api
+- `composer require valantic-cec/stores-rest-api`
 
 # HowTos
 
