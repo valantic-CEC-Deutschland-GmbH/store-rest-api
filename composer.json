@@ -1,5 +1,5 @@
 {
-    "name": "valantic-spryker/store-rest-api",
+    "name": "valantic-cec/store-rest-api",
     "type": "library",
     "description": "Allows/Adds mapper extension to /stores endpoint.",
     "license": "MIT",
@@ -22,9 +22,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "gitlab-domains": [
-            "gitlab.nxs360.com"
-        ],
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
