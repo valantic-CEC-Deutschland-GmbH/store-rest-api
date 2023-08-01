@@ -6,7 +6,7 @@
  - Adds mapper extension plugins [[plugins](Glue/StoresRestApi/Plugin/StoreResourceMapperPluginInterface.php)]  to /stores endpoint
 
 # Install
-- `composer require valantic-cec/stores-rest-api`
+- `composer require valantic-spryker/stores-rest-api`
 
 # HowTos
 
